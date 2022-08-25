@@ -28,6 +28,7 @@ import { BloodGroupEdit } from './page/m_page/M_BloodGroup_Edit';
 import { Relation } from './page/m_page/M_Relation';
 import { RelationList } from './page/m_page/M_Relation_View';
 import { RelationEdit } from './page/m_page/M_Relation_Edit';
+import { StudentAdmission } from './page/e_page/E_StudentAdmission';
 
 const ROLES = {
   'Staff': 5,
@@ -71,6 +72,8 @@ function App() {
         <Route path='RelationList' element={<RelationList/>}/>
         <Route path='RelationEdit/:relationId' element={< RelationEdit/>}/>
 
+        <Route path='StudentAdmission' element={<StudentAdmission/>}/>
+        
       </Route>
 
       <Route element={<RequireAuth allowedRoles={[ROLES.Staff]} />}>

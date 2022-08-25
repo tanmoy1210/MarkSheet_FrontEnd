@@ -76,6 +76,10 @@ export const Sidebar = () => {
                     </li>
 
                     <li className="nav-item">
+                    <Link to="/StudentAdmission" className="nav-link nav-toggle"><i data-feather="calendar"></i> <span className="title">Student Admission</span></Link>                 
+                    </li>
+
+                    <li className="nav-item">
                         <a href="#" className="nav-link nav-toggle"> <i data-feather="user"></i>
                             <span className="title">Professors</span> <span className="arrow"></span>
                         </a>

@@ -24,6 +24,7 @@ export const User = () => {
     const [status, setStatus] = useState(0);
     const [lastStatusAt, setLastStatusAt] = useState();
     const [client_id, setClientId] = useState(0);
+    const[message, setMessage] = useState('');
     //End Fields
     const userRoles = [
         { label: "Admin", value: 2001 },
@@ -95,7 +96,7 @@ export const User = () => {
 
     useEffect(() => {
     setErrMsg('');
-    }, [username, emailId, mobileNumber, userPassword, roleId, userRegId,status,client_id, lastStatusAt])
+    }, [username, emailId, mobileNumber, userPassword, roleId, userRegId,status,client_id, lastStatusAt, message])
 
     const handleCancelClick= (e) =>{
       navigate(navigateTo, { replace: true });
@@ -135,9 +136,11 @@ export const User = () => {
           SHA: encrypteddata 
       };
       prm.data = data;      
-      service.ServerAPICall(prm, 'ProcessData').then(e => { 
-
-        alert('Record saved successfully'); 
+      service.ServerAPICall(prm, 'ProcessData').then(e => {
+        //var json = JSON.parse(e);
+        alert(e.r_message);
+        setMessage(e.r_message);
+        //alert('Record saved successfully'); 
         navigate(navigateTo, { replace: true });
 
       }).catch(e => alert(e));
@@ -223,7 +226,9 @@ export const User = () => {
                     <div className="card-body" id="bar-parent2">
                     <form onSubmit={handleSave} id="form_sample_2" className="form-horizontal">
 										<div className="form-body">
-
+                    <div className="form-group row  margin-top-20">
+                    <label className="control-label col-md-3">{message}</label>
+                    </div>
 											<div className="form-group row  margin-top-20">
 												<label className="control-label col-md-3">User Name
 													<span className="required"> * </span>
